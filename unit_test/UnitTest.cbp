@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="UnitTest" />
+		<Option pch_mode="2" />
+		<Option compiler="current_compiler" />
+		<Build>
+			<Target title="Debug">
+				<Option output="Debug/unit_testd" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug" />
+				<Option type="1" />
+				<Option compiler="current_compiler" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="Debug" />
+					<Add directory="../Debug" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="Release/unit_test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release" />
+				<Option type="1" />
+				<Option compiler="current_compiler" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="Release" />
+					<Add directory="../Release" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-Wextra" />
+			<Add option="-Wwrite-strings" />
+			<Add option="-Werror=vla" />
+			<Add option="-Werror=return-type" />
+			<Add option="-fexceptions" />
+			<Add option="--coverage" />
+			<Add directory="./" />
+			<Add directory="../" />
+		</Compiler>
+		<Linker>
+			<Add library="JrCore" />
+			<Add library="gtest" />
+			<Add library="pthread" />
+			<Add library="rt" />
+			<Add library="gcov" />
+		</Linker>
+		<Unit filename="../algorithm/bubble_sort_test.cpp" />
+		<Unit filename="../algorithm/heap_sort_test.cpp" />
+		<Unit filename="../algorithm/insertion_sort_test.cpp" />
+		<Unit filename="../algorithm/quick_sort_test.cpp" />
+		<Unit filename="../algorithm/selection_sort_test.cpp" />
+		<Unit filename="app.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
