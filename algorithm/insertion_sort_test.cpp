@@ -3,6 +3,8 @@
 
 #include <gtest/gtest.h>
 
+#define trace(...)
+
 using namespace Jirak;
 
 int gInsertionSort = 0;
@@ -18,13 +20,14 @@ TEST(JrCore_Algorithm_Sorting_Insertion, DefaultTest)
         array[i] = JrRandomUtil::genNumber<uint32>();
     }
 
-    printf("Jirak::insertionSortTest... (%ld items)\n", ARRAY_COUNT);
+    trace("Jirak::insertionSortTest... (%ld items)\n", ARRAY_COUNT);
     uint32 tick0 = JrTickUtil::currentTick();
     Jirak::insertionSort<uint32>(array, ARRAY_COUNT);
     uint32 tick1 = JrTickUtil::currentTick();
-    printf("elapsed-time: %u ms\n", JrTickUtil::diffTick(tick0, tick1));
+    trace("elapsed-time: %u ms\n", JrTickUtil::diffTick(tick0, tick1));
 
     EXPECT_TRUE(JrDataUtil::checkSortedArray(array, ARRAY_COUNT));
+    EXPECT_TRUE(JrTickUtil::diffTick(tick0, tick1) < 40000);
 
     delete[] array;
 }
