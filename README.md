@@ -7,7 +7,7 @@ Jirak 코어 라이브러리는 연습용 라이브러리 입니다.
 
 * 퀵-소트 알고리즘
   * 정의 : https://en.wikipedia.org/wiki/Quicksort <br>
-    퀵-정렬(Quicksort)은 찰스 앤터니 리처드 호어가 개발한 정렬 알고리즘이다. <br>
+    퀵-정렬(Quicksort)은 Sir Charles Antony Richard Hoare가 개발한 정렬 알고리즘이다. <br>
     다른 원소와의 비교만으로 정렬을 수행하는 비교 정렬에 속한다. <br>
     퀵 정렬은 n개의 데이터를 정렬할 때, 최악의 경우에는 O(n^2)번의 비교를 수행하고, 평균적으로 O(n log n)번의 비교를 수행한다. <br>
     퀵 정렬은 분할 정복(divide and conquer) 방법을 통해 리스트를 정렬한다. <br>
