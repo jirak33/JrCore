@@ -29,6 +29,8 @@ SRCS_All :=
 SRCS_All += ../algorithm/bubble_sort_test.cpp
 SRCS_All += ../algorithm/heap_sort_test.cpp
 SRCS_All += ../algorithm/insertion_sort_test.cpp
+SRCS_All += ../algorithm/tim_sort_test.cpp
+SRCS_All += ../algorithm/radix_sort_test.cpp
 SRCS_All += ../algorithm/quick_sort_test.cpp
 SRCS_All += ../algorithm/selection_sort_test.cpp
 SRCS_All += app.cpp
@@ -37,6 +39,8 @@ HDRS_All :=
 HDRS_All += ../algorithm/bubble_sort.hpp
 HDRS_All += ../algorithm/heap_sort.hpp
 HDRS_All += ../algorithm/insertion_sort.hpp
+HDRS_All += ../algorithm/tim_sort.hpp
+HDRS_All += ../algorithm/radix_sort.cpp
 HDRS_All += ../algorithm/quick_sort.hpp
 HDRS_All += ../algorithm/selection_sort.hpp
 

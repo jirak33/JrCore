@@ -93,12 +93,16 @@ SRCS_Release_UnitTest += algorithm/bubble_sort_test.cpp
 SRCS_Release_UnitTest += algorithm/heap_sort_test.cpp
 SRCS_Release_UnitTest += algorithm/insertion_sort_test.cpp
 SRCS_Release_UnitTest += algorithm/quick_sort_test.cpp
+SRCS_Release_UnitTest += algorithm/tim_sort_test.cpp
+SRCS_Release_UnitTest += algorithm/radix_sort_test.cpp
 SRCS_Release_UnitTest += algorithm/selection_sort_test.cpp
 
 SRCS_Debug_UnitTest += algorithm/bubble_sort_test.cpp
 SRCS_Debug_UnitTest += algorithm/heap_sort_test.cpp
 SRCS_Debug_UnitTest += algorithm/insertion_sort_test.cpp
 SRCS_Debug_UnitTest += algorithm/quick_sort_test.cpp
+SRCS_Debug_UnitTest += algorithm/tim_sort_test.cpp
+SRCS_Debug_UnitTest += algorithm/radix_sort_test.cpp
 SRCS_Debug_UnitTest += algorithm/selection_sort_test.cpp
 
 
