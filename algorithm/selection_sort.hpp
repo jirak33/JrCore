@@ -22,16 +22,16 @@ namespace Jirak {
     template<typename T>
     void selectionSort(T a[], size_t size)
     {
-	    size_t minIndex = 0;
-	    for (size_t i = 0; i < size; i++) {
-		    minIndex = i;
-		    for (size_t j = i + 1; j < size; j++) {
-			    if (a[j] < a[minIndex]) {
-				    minIndex = j;
-			    }
-		    }
-		    JrDataUtil::swap(a[i], a[minIndex]);
-	    }
+        size_t minIndex = 0;
+        for (size_t i = 0; i < size; i++) {
+            minIndex = i;
+            for (size_t j = i + 1; j < size; j++) {
+                if (a[j] < a[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            JrDataUtil::swap(a[i], a[minIndex]);
+        }
     }
 
 }   // end of Jirak

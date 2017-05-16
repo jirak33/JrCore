@@ -44,7 +44,7 @@ namespace Jirak {
                     s.append(buf);
                 }
                 ::sprintf(buf, "%d", a[i]);
-	            s.append(buf);
+                s.append(buf);
             }
             s.append(" }");
 

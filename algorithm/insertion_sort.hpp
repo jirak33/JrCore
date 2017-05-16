@@ -22,15 +22,15 @@ namespace Jirak {
     template<typename T>
     void insertionSort(T a[], size_t size)
     {
-	    for (size_t i = 1; i < size; i++) {
-		    T tmp = a[i];
-		    size_t j = i - 1;
-		    while (j >= 0 && a[j] > tmp) {
-			    a[j + 1] = a[j];
-			    j--;
-		    }
-		    a[j + 1] = tmp;
-	    }
+        for (size_t i = 1; i < size; i++) {
+            T tmp = a[i];
+            size_t j = i - 1;
+            while (j >= 0 && a[j] > tmp) {
+                a[j + 1] = a[j];
+                j--;
+            }
+            a[j + 1] = tmp;
+        }
     }
 
 }   // end of Jirak

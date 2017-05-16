@@ -20,7 +20,7 @@
 namespace Jirak {
 
     template<typename T>
-    void satisfyHeap(T a[], size_t index, size_t heapSize)
+    void makeBinTree(T a[], size_t index, size_t heapSize)
     {
         if (index < 0 || heapSize < 0 || index > heapSize) {
             return;
@@ -43,17 +43,15 @@ namespace Jirak {
 
         if (largest != index) {
             JrDataUtil::swap(a[index], a[largest]);
-            satisfyHeap<T>(a, largest, heapSize);
+            makeBinTree<T>(a, largest, heapSize);
         }
     }
 
     template<typename T>
     void buildHeap(T a[], size_t length)
     {
-        size_t heapSize = length;
-        size_t i = static_cast<size_t>(length / 2);
-        for (; i > 0; i--) {
-            satisfyHeap<T>(a, i, heapSize);
+        for (size_t i = static_cast<size_t>(length / 2); i > 0; i--) {
+            makeBinTree<T>(a, i, length);
         }
     }
 
@@ -64,7 +62,7 @@ namespace Jirak {
         size_t heapSize = length;
         for (size_t i = heapSize; i > 0; i--) {
             JrDataUtil::swap(a[0], a[heapSize--]);
-            satisfyHeap<T>(a, 0, heapSize);
+            makeBinTree<T>(a, 0, heapSize);
         }
     }
 

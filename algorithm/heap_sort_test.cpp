@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-#define trace printf
+#define trace(...)
 
 using namespace Jirak;
 

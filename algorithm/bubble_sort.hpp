@@ -22,13 +22,13 @@ namespace Jirak {
     template<typename T, typename INDEX>
     void bubbleSort(T a[], INDEX size)
     {
-	    for (INDEX i = 0; i < size; i++) {
-		    for (INDEX j = i + 1; j < size; j++) {
-			    if (a[i] > a[j]) {
-				    JrDataUtil::swap<T>(a[i], a[j]);
-			    }
-		    }
-	    }
+        for (INDEX i = 0; i < size; i++) {
+            for (INDEX j = i + 1; j < size; j++) {
+                if (a[i] > a[j]) {
+                    JrDataUtil::swap<T>(a[i], a[j]);
+                }
+            }
+        }
     }
 
 }   // end of Jirak
