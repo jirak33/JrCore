@@ -25,69 +25,11 @@
 
 namespace Jirak {
 
-    template<typename T, typename INDEX>
-    INDEX partitionNormal(T a[], INDEX left, INDEX right)
-    {
-        T pivotValue = a[right];
-
-        INDEX storeIndex = left;
-
-        for (INDEX i = left; i < right; i++) {
-            if (a[i] < pivotValue) {
-                if (i != storeIndex) {
-                    JrDataUtil::swap(a[storeIndex], a[i]);
-                }
-                storeIndex++;
-            }
-        }
-
-        if (right != storeIndex) {
-            JrDataUtil::swap(a[right], a[storeIndex]);
-        }
-
-        return storeIndex;
-    }
-
-    template<typename T, typename INDEX>
-    void quickSortNormal(JrStack<INDEX>* S, T a[], INDEX left, INDEX right)
-    {
-        S->init();
-        S->push(right);
-        S->push(left);
-
-        while (!S->isEmpty()) {
-            INDEX l = S->pop();
-            INDEX r = S->pop();
-
-            if (l < 0 || l >= std::numeric_limits<INDEX>::max()) {
-                continue;
-            }
-
-            if (r < 0 || r >= std::numeric_limits<INDEX>::max()) {
-                continue;
-            }
-
-            if (l < r) {
-                INDEX q = partitionNormal(a, l, r);
-                if (l < q - 1 && q > 0) {
-                    S->push(static_cast<INDEX>(q - 1));
-                    S->push(l);
-                }
-
-                if (q + 1 < r) {
-                    S->push(r);
-                    S->push(static_cast<INDEX>(q + 1));
-                }
-            }
-        }
-    }
-
-
-    /////////////////////////////////////////////////////////////////////
+    /** 3-way partitioning & median-pivot iteration method */
 
     template<typename INDEX>
     struct PivotInfo {
-      INDEX left, right;
+        INDEX left, right;
     };
 
 
@@ -96,20 +38,18 @@ namespace Jirak {
     {
         INDEX mid = ((left + right) >> 1);
 
-        // a[Left] <= a[cenmidter] <= a[right].
+        // make sure that 'a[left] <= a[mid] <= a[right]'.
         if (a[left] > a[mid]) {
             JrDataUtil::swap(a[left], a[mid]);
         }
-
         if (a[left] > a[right]) {
             JrDataUtil::swap(a[left], a[right]);
         }
-
         if (a[mid] > a[right]) {
             JrDataUtil::swap(a[mid], a[right]);
         }
 
-        JrDataUtil::swap(a[mid], a[right - 1]); //< 피봇된 수를 'right - 1'의 위치에 있는 수와 swap.
+        JrDataUtil::swap(a[mid], a[right - 1]);
 
         assert(right > 0);
 
@@ -128,10 +68,9 @@ namespace Jirak {
 
         T pivot = findMedianPivot(a, left, right);
 
-        // three way partitions.
-        while (1) {
-            while (i < right && a[++i] < pivot)
-                ;
+        // 3-way partitions.
+        while (true) {
+            while (i < right && a[++i] < pivot);
 
             while (j > left && a[--j] > pivot) {
                 if (j == left) {
@@ -144,11 +83,9 @@ namespace Jirak {
             }
 
             JrDataUtil::swap(a[i], a[j]);
-
             if (a[i] == pivot) {
                 JrDataUtil::swap(a[++m], a[i]);
             }
-
             if (a[j] == pivot) {
                 JrDataUtil::swap(a[--n], a[j]);
             }
@@ -209,8 +146,69 @@ namespace Jirak {
 
 
     /////////////////////////////////////////////////////////////////////
+    /** 1-way partitioning & normal-pivot iteration method */
 
-    enum QSortPivotType { QS_NORMAL, QS_MEDIAN };
+    template<typename T, typename INDEX>
+    INDEX partitionNormal(T a[], INDEX left, INDEX right)
+    {
+        T pivotValue = a[right];
+
+        INDEX storeIndex = left;
+
+        for (INDEX i = left; i < right; i++) {
+            if (a[i] < pivotValue) {
+                if (i != storeIndex) {
+                    JrDataUtil::swap(a[storeIndex], a[i]);
+                }
+                storeIndex++;
+            }
+        }
+
+        if (right != storeIndex) {
+            JrDataUtil::swap(a[right], a[storeIndex]);
+        }
+
+        return storeIndex;
+    }
+
+    template<typename T, typename INDEX>
+    void quickSortNormal(JrStack<INDEX>* S, T a[], INDEX left, INDEX right)
+    {
+        S->init();
+        S->push(right);
+        S->push(left);
+
+        while (!S->isEmpty()) {
+            INDEX l = S->pop();
+            INDEX r = S->pop();
+
+            if (l < 0 || l >= std::numeric_limits<INDEX>::max()) {
+                continue;
+            }
+
+            if (r < 0 || r >= std::numeric_limits<INDEX>::max()) {
+                continue;
+            }
+
+            if (l < r) {
+                INDEX q = partitionNormal(a, l, r);
+                if (l < q - 1 && q > 0) {
+                    S->push(static_cast<INDEX>(q - 1));
+                    S->push(l);
+                }
+
+                if (q + 1 < r) {
+                    S->push(r);
+                    S->push(static_cast<INDEX>(q + 1));
+                }
+            }
+        }
+    }
+
+    enum QSortPivotType {
+        QS_NORMAL,
+        QS_MEDIAN
+    };
 
     template<typename T, typename INDEX>
     void quickSort(QSortPivotType type, JrStack<INDEX>* S, T a[], INDEX left, INDEX right)
@@ -225,6 +223,7 @@ namespace Jirak {
 
 
     /////////////////////////////////////////////////////////////////////
+    /** tail-recursion method */
 
     template<typename T, typename INDEX>
     INDEX partition(T a[], INDEX p, INDEX r)
@@ -247,7 +246,6 @@ namespace Jirak {
         if (left < 0 || left >= std::numeric_limits<INDEX>::max()) {
             return;
         }
-
         if (right < 0 || right >= std::numeric_limits<INDEX>::max()) {
             return;
         }
@@ -267,6 +265,7 @@ namespace Jirak {
 
 
     /////////////////////////////////////////////////////////////////////
+    /** pure-recursion method */
 
     template<typename T, typename INDEX>
     void quickSortPureRecursion(T a[], INDEX left, INDEX right)
@@ -274,7 +273,6 @@ namespace Jirak {
         if (left < 0 || left >= std::numeric_limits<INDEX>::max()) {
             return;
         }
-
         if (right < 0 || right >= std::numeric_limits<INDEX>::max()) {
             return;
         }
