@@ -12,7 +12,8 @@ int gRadixSort = 0;
 TEST(JrCore_Algorithm_Sorting_Radix, DefaultTest)
 {
     const size_t ARRAY_COUNT = 100000000; //< 100 million items.
-    uint32* array = new uint32[ARRAY_COUNT];
+    std::vector<uint32> array(ARRAY_COUNT);
+    std::vector<uint32> result(ARRAY_COUNT);
 
     JrRandomUtil::init();
 
@@ -22,20 +23,19 @@ TEST(JrCore_Algorithm_Sorting_Radix, DefaultTest)
 
     trace("Jirak::radixSortTest... (%ld items)\n", ARRAY_COUNT);
     uint32 tick0 = JrTickUtil::currentTick();
-    Jirak::radixSort<uint32>(array, ARRAY_COUNT);
+    Jirak::radixSort(array.begin(), array.end(), result.begin());
     uint32 tick1 = JrTickUtil::currentTick();
     trace("elapsed-time: %u ms\n", JrTickUtil::diffTick(tick0, tick1));
 
-    EXPECT_TRUE(JrDataUtil::checkSortedArray(array, ARRAY_COUNT));
+    EXPECT_TRUE(JrDataUtil::checkSortedArray(&result[0], ARRAY_COUNT));
     EXPECT_TRUE(JrTickUtil::diffTick(tick0, tick1) < 40000);
-
-    delete[] array;
 }
 
 TEST(JrCore_Algorithm_Sorting_Radix, PartialySorted)
 {
     const size_t ARRAY_COUNT = 100000000; //< 100 million items.
-    uint32* array = new uint32[ARRAY_COUNT];
+    std::vector<uint32> array(ARRAY_COUNT);
+    std::vector<uint32> result(ARRAY_COUNT);
 
     JrRandomUtil::init();
 
@@ -53,20 +53,19 @@ TEST(JrCore_Algorithm_Sorting_Radix, PartialySorted)
 
     trace("Jirak::radixSortTest... (%ld items)\n", ARRAY_COUNT);
     uint32 tick0 = JrTickUtil::currentTick();
-    Jirak::radixSort<uint32>(array, ARRAY_COUNT);
+    Jirak::radixSort(array.begin(), array.end(), result.begin());
     uint32 tick1 = JrTickUtil::currentTick();
     trace("elapsed-time: %u ms\n", JrTickUtil::diffTick(tick0, tick1));
 
-    EXPECT_TRUE(JrDataUtil::checkSortedArray(array, ARRAY_COUNT));
+    EXPECT_TRUE(JrDataUtil::checkSortedArray(&result[0], ARRAY_COUNT));
     EXPECT_TRUE(JrTickUtil::diffTick(tick0, tick1) < 40000);
-
-    delete[] array;
 }
 
 TEST(JrCore_Algorithm_Sorting_Radix, ReversedSorted)
 {
     const size_t ARRAY_COUNT = 100000000; //< 100 million items.
-    uint32* array = new uint32[ARRAY_COUNT];
+    std::vector<uint32> array(ARRAY_COUNT);
+    std::vector<uint32> result(ARRAY_COUNT);
 
     JrRandomUtil::init();
 
@@ -76,14 +75,12 @@ TEST(JrCore_Algorithm_Sorting_Radix, ReversedSorted)
 
     trace("Jirak::radixSortTest... (%ld items)\n", ARRAY_COUNT);
     uint32 tick0 = JrTickUtil::currentTick();
-    Jirak::radixSort<uint32>(array, ARRAY_COUNT);
+    Jirak::radixSort(array.begin(), array.end(), result.begin());
     uint32 tick1 = JrTickUtil::currentTick();
     trace("elapsed-time: %u ms\n", JrTickUtil::diffTick(tick0, tick1));
 
-    EXPECT_TRUE(JrDataUtil::checkSortedArray(array, ARRAY_COUNT));
+    EXPECT_TRUE(JrDataUtil::checkSortedArray(&result[0], ARRAY_COUNT));
     EXPECT_TRUE(JrTickUtil::diffTick(tick0, tick1) < 40000);
-
-    delete[] array;
 }
 
 
