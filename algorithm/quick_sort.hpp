@@ -1,5 +1,5 @@
-#ifndef _JIRAK_SOFTWARE_ALGORITHM_QUICK_SORT_H
-#define _JIRAK_SOFTWARE_ALGORITHM_QUICK_SORT_H
+#ifndef _JIRAK_CORE_ALGORITHM_QUICK_SORT_H
+#define _JIRAK_CORE_ALGORITHM_QUICK_SORT_H
 /////////////////////////////////////////////////////////////////////
 
 // MS compatible compilers support #pragma once.
@@ -289,7 +289,7 @@ namespace Jirak {
 }   // end of Jirak
 
 /////////////////////////////////////////////////////////////////////
-#endif  // _JIRAK_QUICK_SORT_H
+#endif  // _JIRAK_CORE_ALGORITHM_QUICK_SORT_H
 
 
 // <EOF>

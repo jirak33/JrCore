@@ -1,5 +1,5 @@
-#ifndef _JIRAK_CORE_ALL_UTILS_H
-#define _JIRAK_CORE_ALL_UTILS_H
+#ifndef _JIRAK_CORE_UTILS_ALL_H
+#define _JIRAK_CORE_UTILS_ALL_H
 /////////////////////////////////////////////////////////////////////
 
 // MS compatible compilers support #pragma once.
@@ -13,7 +13,7 @@
 #include "tick_util.hpp"
 
 /////////////////////////////////////////////////////////////////////
-#endif  // _JIRAK_CORE_ALL_UTILS_H
+#endif  // _JIRAK_CORE_UTILS_ALL_H
 
 
 // <EOF>

@@ -1,5 +1,5 @@
-#ifndef _JIRAK_CORE_TICK_UTIL_H
-#define _JIRAK_CORE_TICK_UTIL_H
+#ifndef _JIRAK_CORE_UTILS_TICK_H
+#define _JIRAK_CORE_UTILS_TICK_H
 /////////////////////////////////////////////////////////////////////
 
 // MS compatible compilers support #pragma once.
@@ -50,7 +50,7 @@ namespace Jirak {
 }   // end of Jirak
 
 /////////////////////////////////////////////////////////////////////
-#endif  // _JIRAK_CORE_TICK_UTIL_H
+#endif  // _JIRAK_CORE_UTILS_TICK_H
 
 
 // <EOF>
